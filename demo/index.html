@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test</title>
+</head>
+<body>
+	<div>sdsd</div>
+	<script type="text/javascript" src="../tap-event.js"></script>
+	<script type="text/javascript" src="../index.js"></script>
+	<script type="text/javascript">
+		document.addEventListener("DOMContentLoaded", function (){
+			var mainSound = new modernSound({
+				src: './audio/bluejean_short.mp3',
+				loaded: function(){
+					console.log('loaded', mainSound);
+					//mainSound.play();
+				}
+			});
+			// var mainSound1 = new modernSound({
+			// 	src: './audio/Ella Eyre-Typical Me.mp3',
+			// 	volume: 0.5,
+			// 	autoplay: true
+			// })
+
+			mainSound.play();
+			//mainSound1.play();
+
+
+			// setTimeout(() => {
+			// 	mainSound1.setVolume(100, false);
+			// 	console.log(mainSound1);
+			// }, 2000);
+			
+		});
+	</script>
+<!-- 	<script type="text/javascript">
+		var mainSound = new modernSound({
+			src: ['./audio/bluejean_short.mp3'],
+			sprite: {// key [offset, duration, (loop)]
+		        one: [0, 450],
+		        two: [2000, 250],
+		        three: [4000, 350],
+		        four: [6000, 380],
+		        five: [8000, 340],
+		        beat: [10000, 11163, true]
+			},
+			autoplay: false
+		});
+
+		// setTimeout(() => {
+		// 	mainSound.play();
+		// 	console.log(mainSound.state);
+		// }, 4000);
+
+		// setTimeout(() => {
+		// 	mainSound.play('beat');
+		// }, 6000)
+		// setTimeout(() => {
+		// 	mainSound.pause();
+		// 	console.log('pause');
+		// }, 5000);
+		// console.log(mainSound);
+		// setTimeout(() => {
+		// 	mainSound.resume();
+		// }, 6000);
+
+		// document.addEventListener('touchstart', () => {
+		// 	mainSound.play();
+		// 	console.log(mainSound)
+		// })
+	</script> -->
+</body>
+</html>
