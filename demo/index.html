@@ -5,27 +5,53 @@
 	<title>test</title>
 </head>
 <body>
-	<div>sdsd</div>
+	<h1>Web Audio API 混音</h1>
+	<button id="play">播放</button>
+	<div>
+		<button id="jump">跳</button>
+		<button id="gold">金币</button>
+		<button id="kick">踩</button>
+	</div>
 	<script type="text/javascript" src="../tap-event.js"></script>
 	<script type="text/javascript" src="../index.js"></script>
 	<script type="text/javascript">
 		document.addEventListener("DOMContentLoaded", function (){
-			var gameSound = new modernSound({
-				src: './audio/bluejean_short.mp3',
-				loaded: function(){
-					console.log('loaded', mainSound);
-					//mainSound.play();
-				},
-				autoplay: true
-			});
+			var playBtn = document.getElementById('play'),
+				jumpBtn = document.getElementById('jump'),
+				goldBtn = document.getElementById('gold'),
+				kickBtn = document.getElementById('kick');
+
 			var bgSound = new modernSound({
-				src: './audio/Typical_Me.mp3',
-				volume: 0.8,
-				autoplay: true
+				src: './audio/rectangle1.mp3'
 			});
 
-			gameSound.play();
-			bgSound.play();
+			var jump = new modernSound({
+				src: './audio/jump.mp3'
+			});
+
+			var kick = new modernSound({
+				src: './audio/kick.mp3'
+			});
+
+			var gold = new modernSound({
+				src: './audio/gold.mp3'
+			});
+
+			playBtn.addEventListener('click', () => {
+				bgSound.play();
+			});
+
+			jumpBtn.addEventListener('click', () => {
+				jump.play();
+			});
+
+			kickBtn.addEventListener('click', () => {
+				kick.play();
+			});
+
+			goldBtn.addEventListener('click', () => {
+				gold.play();
+			});									
 		});
 	</script>
 </body>

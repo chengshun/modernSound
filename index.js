@@ -390,15 +390,16 @@ modernSound.prototype = {
 		const buffer = this.bufferList[targetUrl];
 		const sourceKey = `${targetUrl}_${name}`;
 
-		let currentSource = null;
-		if (!this.sourcePool[sourceKey]) {
-			const source = this.makeSource(buffer);
-			currentSource = source.source;
-			//add source to sourcePool
-			this.sourcePool[sourceKey] = source;
-		} else {
-			currentSource = this.sourcePool[sourceKey].source;
+		let currentSource = this.sourcePool[sourceKey] ? this.sourcePool[sourceKey].source || null : null;
+		if (currentSource) {
+			currentSource.disconnect();
+			this.sourcePool[sourceKey] = null;
 		}
+
+		const source = this.makeSource(buffer);
+		currentSource = source.source;
+		//add source to sourcePool
+		this.sourcePool[sourceKey] = source;	
 
 		this.playingSounds[sourceKey] = currentSource;
 		
